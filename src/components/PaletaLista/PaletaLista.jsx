@@ -46,7 +46,7 @@ function PaletaLista({
 
     const entries = Object.entries(paletaSelecionada);
     const sacola = entries.map((arr) => ({
-      paletaId: paletas[arr[0]].id || 'f9268y7t34',
+      paletaId: paletas[arr[0]].id ? paletas[arr[0]].id : 'ff314bi25nmkp34',
       quantidade: arr[1],
     }));
 
