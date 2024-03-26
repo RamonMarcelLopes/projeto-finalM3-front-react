@@ -1,9 +1,9 @@
-import "./PaletaLista.css";
-import { PaletaService } from "../../services/PaletaService";
-import { useState, useEffect, useCallback } from "react";
-import PaletaListaItem from "../PaletaListaItem/PaletaListaItem";
-import PaletaDetalhesModal from "../PaletaDetalhesModal/PaletaDetalhesModal";
-import { ActionMode } from "../../constants/index";
+import './PaletaLista.css';
+import { PaletaService } from '../../services/PaletaService';
+import { useState, useEffect, useCallback } from 'react';
+import PaletaListaItem from '../PaletaListaItem/PaletaListaItem';
+import PaletaDetalhesModal from '../PaletaDetalhesModal/PaletaDetalhesModal';
+import { ActionMode } from '../../constants/index';
 
 function PaletaLista({
   paletaCriada,
@@ -42,17 +42,17 @@ function PaletaLista({
   };
 
   const setSelecionadas = useCallback(() => {
-    if(!paletas.length) return;
+    if (!paletas.length) return;
 
     const entries = Object.entries(paletaSelecionada);
-    const sacola = entries.map(arr => ({
-      paletaId: paletas[arr[0]].id,
-      quantidade: arr[1]
-    }))
+    const sacola = entries.map((arr) => ({
+      paletaId: paletas[arr[0]].id || 'f9268y7t34',
+      quantidade: arr[1],
+    }));
 
-    localStorage.setItem('sacola', JSON.stringify(sacola))
-    localStorage.setItem('selecionadas', JSON.stringify(paletaSelecionada))
-  }, [ paletaSelecionada, paletas ]);
+    localStorage.setItem('sacola', JSON.stringify(sacola));
+    localStorage.setItem('selecionadas', JSON.stringify(paletaSelecionada));
+  }, [paletaSelecionada, paletas]);
 
   const onRemove = (paletaIndex) => {
     const paleta = {
@@ -84,7 +84,7 @@ function PaletaLista({
 
   useEffect(() => {
     setSelecionadas();
-  }, [setSelecionadas, paletaSelecionada])
+  }, [setSelecionadas, paletaSelecionada]);
 
   return (
     <div className="PaletaLista">
