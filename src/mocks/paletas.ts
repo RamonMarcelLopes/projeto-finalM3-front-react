@@ -1,4 +1,14 @@
-export const paletas = [
+type Paletas = {
+  titulo: string;
+  descricao: string;
+  foto: string;
+  preco: Number;
+  sabor: string;
+  recheio?: string;
+  possuiRecheio: boolean;
+};
+
+export const paletas: Paletas[] = [
   {
     titulo: 'Açaí com Leite Condensado',
     descricao:
