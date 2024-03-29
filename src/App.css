@@ -17,6 +17,9 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.logo.jaca:hover {
+  filter: drop-shadow(0 0 2em #00ff3caa);
+}
 
 @keyframes logo-spin {
   from {
