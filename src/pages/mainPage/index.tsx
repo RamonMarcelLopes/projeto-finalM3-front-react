@@ -2,23 +2,31 @@ import { useEffect, useState } from 'react';
 import PaletaCard from '../../components/PaletaCard';
 import { findAllService } from '../../services/paletasService';
 import './index.css';
+import { PALETA, BAG } from './types';
+
 const MainPage = () => {
-  type PALETA = {
-    _id: string;
-    sabor: string;
-    preco: Number;
-    descricao: string;
-    foto: string;
-  };
   let [data, setData] = useState<PALETA[]>();
+  let [groceryBag, setGroceryBag] = useState();
+  let bag: BAG[] = [];
+
+  let addToBag = (id: string, quantity: number) => {
+    bag.push({ paletaId: id, quantidade: quantity });
+    console.log('💘', bag);
+  };
+  let removeFromBag = (id: string) => {
+    let indexToRemove = bag.findIndex((item) => item.paletaId === id);
+    if (indexToRemove !== -1) {
+      bag.splice(indexToRemove, 1);
+    }
+    console.log(bag);
+  };
+
   useEffect(() => {
     getAllPaletas();
   }, []);
   const getAllPaletas = async () => {
     const response = await findAllService.allPaletas();
-
     setData(response.data);
-    console.log(data, '❤❤');
   };
   return (
     <>
@@ -70,6 +78,9 @@ const MainPage = () => {
             {data?.map((data: PALETA) => {
               return (
                 <PaletaCard
+                  addtobag={addToBag}
+                  removeFromBag={removeFromBag}
+                  key={data._id}
                   _id={data._id}
                   sabor={data.sabor}
                   preco={data.preco}

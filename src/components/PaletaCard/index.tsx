@@ -7,12 +7,27 @@ type PALETA = {
   preco: Number;
   descricao: string;
   foto: string;
+  addtobag: (id: string, quantity: number) => void;
+  removeFromBag: (id: string) => void;
 };
-const PaletaCard = ({ _id, sabor, preco, descricao, foto }: PALETA) => {
+const PaletaCard = ({
+  _id,
+  sabor,
+  preco,
+  descricao,
+  foto,
+  addtobag,
+  removeFromBag,
+}: PALETA) => {
   const [count, setCount] = useState(0);
   let num: number = 2;
   let addPaleta = () => {
     setCount(count + 1);
+    addtobag(_id, 1);
+  };
+  let removePaleta = () => {
+    setCount(count - 1);
+    removeFromBag(_id);
   };
 
   return (
@@ -33,7 +48,7 @@ const PaletaCard = ({ _id, sabor, preco, descricao, foto }: PALETA) => {
               adicionar
             </button>
             <button
-              onClick={() => setCount(count - 1)}
+              onClick={removePaleta}
               className={`buttonPaleta remove lessWidth ${
                 count == 0 ? 'none' : ''
               }`}
