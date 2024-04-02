@@ -1,12 +1,20 @@
 import './index.css';
-import acai from '../../mocks/images/acai-com-leite-condensado.png';
+
 import { useState } from 'react';
-const PaletaCard = () => {
+type PALETA = {
+  _id: string;
+  sabor: string;
+  preco: Number;
+  descricao: string;
+  foto: string;
+};
+const PaletaCard = ({ _id, sabor, preco, descricao, foto }: PALETA) => {
   const [count, setCount] = useState(0);
   let num: number = 2;
   let addPaleta = () => {
     setCount(count + 1);
   };
+
   return (
     <>
       <div className="containerPaleta">
@@ -14,11 +22,9 @@ const PaletaCard = () => {
           {count}
         </span>
         <div className="allContentContainer">
-          <div className="paletaTitleContainer">morango</div>
-          <div className="paletaPreceContainer">R$ {num.toFixed(2)}</div>
-          <div className="paletaDescriptionContainer">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum
-          </div>
+          <div className="paletaTitleContainer">{sabor}</div>
+          <div className="paletaPreceContainer">R$ {preco.toFixed(2)}</div>
+          <div className="paletaDescriptionContainer">{descricao}</div>
           <div className="paletaButtonsContainer">
             <button
               onClick={addPaleta}
@@ -36,7 +42,7 @@ const PaletaCard = () => {
             </button>
           </div>
         </div>
-        <img className="paletaPicture" src={acai} alt="image da paleta" />
+        <img className="paletaPicture" src={foto} alt="image da paleta" />
       </div>
     </>
   );
