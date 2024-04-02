@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+.containerPaleta {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  display: flex;
+  width: 315px;
+  height: 170px;
+  margin-right: 50px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.5s;
+  position: relative;
+}
+.allContentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.paletaPicture {
+  height: 150px;
+  margin-right: -60px;
+}
+.badgeQuantity {
+  background-color: #adff2f;
+  border-radius: 50%;
+  color: #000;
+  font-size: 0.8em;
+  font-family: 'Exo';
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  width: 20px;
+}
+.paletaTitleContainer {
+  font-family: 'Exo';
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 100%;
+}
+.paletaPreceContainer {
+  color: #9400d3;
+  font-family: Exo;
+}
+.paletaDescriptionContainer {
+  font-size: 0.85em;
+  width: 100%;
+  font-family: 'Exo';
+}
+.buttonPaleta {
+  transition: all 0.1s;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Exo, sans-serif;
+  font-weight: 700;
+  max-width: 280px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.add {
+  background-color: #9400d3;
+}
+.remove {
+  background-color: red;
+}
+.lessWidth {
+  width: 48%;
+}
+.paletaButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.none {
+  display: none;
+}

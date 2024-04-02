@@ -1,3 +1,4 @@
+import PaletaCard from '../../components/PaletaCard';
 import './index.css';
 const MainPage = () => {
   let clicktest = (e: any) => {
@@ -49,7 +50,12 @@ const MainPage = () => {
               </div>
             </div>
           </header>
-          <div className="containerAllPaletas">paletas</div>
+          <div className="containerAllPaletas">
+            <PaletaCard />
+            <PaletaCard />
+            <PaletaCard />
+            <PaletaCard />
+          </div>
         </div>
       </div>
     </>
