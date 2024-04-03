@@ -6,6 +6,7 @@ import {
 } from '../../services/paletasService';
 import './index.css';
 import List from './list';
+import { useNavigate } from 'react-router-dom';
 type PALETABAG = {
   paletaId: string;
   quantidade: number;
@@ -24,13 +25,14 @@ export type PALETARETURN = {
 const ModalGroceryBag = () => {
   let [data, setData] = useState<any[]>([]);
   // let [datapaleta, setDatapaleta] = useState<PALETARETURN[]>([]);
-
+  let navigate = useNavigate();
   let getdata = async () => {
     let sacolaLista = await findAllService.allBagPaletas();
     setData(sacolaLista.data);
   };
   let finishCart = async () => {
     let response = await bagService.DeleteBag();
+    navigate('/loading');
   };
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const ModalGroceryBag = () => {
           </div>
           <div className="buttonContainer">
             <button onClick={finishCart} className="buttonFecharCompra">
-              fecharCompra
+              fechar Compra
             </button>
           </div>
         </div>
