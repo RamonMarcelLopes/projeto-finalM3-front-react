@@ -1,26 +1,30 @@
 import { useEffect, useState } from 'react';
 import PaletaCard from '../../components/PaletaCard';
-import { findAllService } from '../../services/paletasService';
+import { bagService, findAllService } from '../../services/paletasService';
 import './index.css';
 import { PALETA, BAG } from './types';
+import ModalGroceryBag from '../../components/modalGroceryBag';
 
 const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
-  let [groceryBag, setGroceryBag] = useState();
   let bag: BAG[] = [];
+  let [modalbag, setModalbag] = useState(false);
 
+  let setmodal = () => {
+    setModalbag(!modalbag);
+  };
   let addToBag = (id: string, quantity: number) => {
     bag.push({ paletaId: id, quantidade: quantity });
-    console.log('💘', bag);
   };
   let removeFromBag = (id: string) => {
     let indexToRemove = bag.findIndex((item) => item.paletaId === id);
     if (indexToRemove !== -1) {
       bag.splice(indexToRemove, 1);
     }
-    console.log(bag);
   };
-
+  let createBag = () => {
+    setModalbag(!modalbag);
+  };
   useEffect(() => {
     getAllPaletas();
   }, []);
@@ -30,6 +34,12 @@ const MainPage = () => {
   };
   return (
     <>
+      {modalbag ? (
+        <>
+          <ModalGroceryBag />
+          <div className="blackScreen" onClick={setmodal}></div>
+        </>
+      ) : null}
       <div className="containerAllMainbackGround">
         <div className="containerAllMain">
           <header className="HeaderContainer">
@@ -65,7 +75,7 @@ const MainPage = () => {
                   className="optionImg"
                 />
               </div>
-              <div className="containerImg">
+              <div className="containerImg" onClick={createBag}>
                 <img
                   src="https://jacaimages.vercel.app/imgs/logos/sacola.svg"
                   alt="img to see the grocery bag "
