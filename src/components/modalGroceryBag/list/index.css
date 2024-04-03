@@ -1,0 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+.containerEachItem {
+  display: flex;
+  font-family: 'EXO';
+}
+
+.quantity {
+  color: #9400d3;
+  margin-left: 10%;
+}

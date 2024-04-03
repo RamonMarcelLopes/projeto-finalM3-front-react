@@ -31,6 +31,11 @@ const bagService = {
       .post('/create-carrinho', values)
       .then((response: any) => response)
       .catch((error: any) => console.log(error)),
+  DeleteBag: () =>
+    api
+      .delete('finish-carrinho')
+      .then((response: any) => response)
+      .catch((error: any) => console.log(error)),
 };
 
 export { findAllService, bagService, findOneService };
