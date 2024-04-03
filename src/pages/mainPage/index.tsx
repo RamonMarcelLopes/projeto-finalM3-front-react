@@ -9,9 +9,12 @@ const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
   let bag: BAG[] = [];
   let [modalbag, setModalbag] = useState(false);
+  let [reset, setReset] = useState<boolean>(false);
 
-  let setmodal = () => {
-    setModalbag(!modalbag);
+  let closemodalAndFinishCart = async () => {
+    setModalbag(false);
+    let response = await bagService.DeleteBag();
+    setReset(!reset);
   };
   let addToBag = (id: string, quantity: number) => {
     bag.push({ paletaId: id, quantidade: quantity });
@@ -22,6 +25,7 @@ const MainPage = () => {
       bag.splice(indexToRemove, 1);
     }
   };
+
   let createBag = () => {
     setModalbag(!modalbag);
   };
@@ -37,7 +41,7 @@ const MainPage = () => {
       {modalbag ? (
         <>
           <ModalGroceryBag />
-          <div className="blackScreen" onClick={setmodal}></div>
+          <div className="blackScreen" onClick={closemodalAndFinishCart}></div>
         </>
       ) : null}
       <div className="containerAllMainbackGround">
@@ -96,6 +100,7 @@ const MainPage = () => {
                   preco={data.preco}
                   descricao={data.descricao}
                   foto={data.foto}
+                  reset={reset}
                 />
               );
             })}

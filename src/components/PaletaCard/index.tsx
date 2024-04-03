@@ -1,6 +1,6 @@
 import './index.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 type PALETA = {
   _id: string;
   sabor: string;
@@ -9,6 +9,7 @@ type PALETA = {
   foto: string;
   addtobag: (id: string, quantity: number) => void;
   removeFromBag: (id: string) => void;
+  reset: boolean;
 };
 const PaletaCard = ({
   _id,
@@ -18,6 +19,7 @@ const PaletaCard = ({
   foto,
   addtobag,
   removeFromBag,
+  reset,
 }: PALETA) => {
   const [count, setCount] = useState(0);
   let num: number = 2;
@@ -29,6 +31,13 @@ const PaletaCard = ({
     setCount(count - 1);
     removeFromBag(_id);
   };
+  let resetCounter = () => {
+    console.log('mudou ai aiiiii');
+    setCount(0);
+  };
+  useEffect(() => {
+    resetCounter();
+  }, [reset]);
 
   return (
     <>
