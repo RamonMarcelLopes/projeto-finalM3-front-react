@@ -71,11 +71,11 @@
 .containerAllPaletas {
   overflow: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 10px;
-  width: 80%;
+  width: 75%;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .blackScreen {
   background-color: rgba(0, 0, 0, 0.557);

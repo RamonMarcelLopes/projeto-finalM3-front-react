@@ -2,7 +2,7 @@
 .containerPaleta {
   background-color: hsla(0, 0%, 100%, 0.3);
   display: flex;
-  width: 315px;
+  width: 330px;
   height: 170px;
   margin-right: 50px;
   margin-bottom: 25px;
@@ -68,8 +68,14 @@
 .add {
   background-color: #9400d3;
 }
+.add:active {
+  transform: scale(0.99);
+}
 .remove {
   background-color: red;
+}
+.remove:active {
+  transform: scale(0.99);
 }
 .lessWidth {
   width: 48%;
