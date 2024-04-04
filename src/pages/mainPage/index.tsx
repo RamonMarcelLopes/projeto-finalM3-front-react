@@ -4,11 +4,13 @@ import { bagService, findAllService } from '../../services/paletasService';
 import './index.css';
 import { PALETA, BAG } from './types';
 import ModalGroceryBag from '../../components/modalGroceryBag';
+import ModalCreatePaleta from '../../components/modalCreatePaleta';
 
 const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
   let bag: BAG[] = [];
   let [modalbag, setModalbag] = useState(false);
+  let [modalCreatePaleta, setModalCreatePaleta] = useState(true);
   let [reset, setReset] = useState<boolean>(false);
 
   let closemodalAndFinishCart = async () => {
@@ -41,12 +43,24 @@ const MainPage = () => {
   };
   return (
     <>
+      {/* modal */}
       {modalbag ? (
         <>
           <ModalGroceryBag />
           <div className="blackScreen" onClick={closemodalAndFinishCart}></div>
         </>
       ) : null}
+      {modalCreatePaleta ? (
+        <>
+          <ModalCreatePaleta />
+          <div
+            onClick={() => setModalCreatePaleta(!modalCreatePaleta)}
+            className="blackScreen"
+          ></div>
+        </>
+      ) : null}
+
+      {/* modal */}
       <div className="containerAllMainbackGround">
         <div className="containerAllMain">
           <header className="HeaderContainer">
@@ -61,7 +75,10 @@ const MainPage = () => {
               <span className="spanTitle">El Geladon</span>
             </div>
             <div className="containerOptions">
-              <div className="containerImg">
+              <div
+                onClick={() => setModalCreatePaleta(true)}
+                className="containerImg"
+              >
                 <img
                   src="https://jacaimages.vercel.app/imgs/logos/paleta.svg"
                   alt="img to crate a new paleta "
