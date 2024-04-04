@@ -10,7 +10,7 @@ const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
   let bag: BAG[] = [];
   let [modalbag, setModalbag] = useState(false);
-  let [modalCreatePaleta, setModalCreatePaleta] = useState(true);
+  let [modalCreatePaleta, setModalCreatePaleta] = useState(false);
   let [reset, setReset] = useState<boolean>(false);
 
   let closemodalAndFinishCart = async () => {
@@ -41,6 +41,9 @@ const MainPage = () => {
     const response = await findAllService.allPaletas();
     setData(response.data);
   };
+  let closeModalCreate = () => {
+    setModalCreatePaleta(false);
+  };
   return (
     <>
       {/* modal */}
@@ -52,7 +55,10 @@ const MainPage = () => {
       ) : null}
       {modalCreatePaleta ? (
         <>
-          <ModalCreatePaleta />
+          <ModalCreatePaleta
+            closeModalCreate={closeModalCreate}
+            reloadPaleta={getAllPaletas}
+          />
           <div
             onClick={() => setModalCreatePaleta(!modalCreatePaleta)}
             className="blackScreen"

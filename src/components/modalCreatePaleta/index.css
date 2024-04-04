@@ -1,7 +1,7 @@
 .modalAllContainer {
   position: absolute;
   background-color: #50c5ee;
-  height: 18rem;
+  height: 15rem;
   width: 25rem;
   z-index: 10;
   top: 50%;
@@ -13,6 +13,24 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.loadContainer {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 15rem;
+  width: 25rem;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  height: 60px;
 }
 .titleContaine {
   text-align: center;
@@ -28,7 +46,7 @@
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  height: 60%;
+  height: 80%;
 
   padding: 15px;
 }
@@ -47,6 +65,9 @@
   border-radius: 5px;
   height: 20px;
   width: 100%;
+  padding: 10px;
+  font-family: 'Exo';
+  outline: none;
 }
 .labelCreate {
   /* background-color: purple; */
@@ -54,11 +75,11 @@
 }
 .containerButton {
   width: 100%;
-  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   /* background-color: forestgreen; */
+  margin-top: 5%;
 }
 
 .ButtonCreatePaleta {
@@ -69,5 +90,12 @@
   cursor: pointer;
   padding: 5px;
   width: 70%;
-  height: 48%;
+  height: 100%;
+  font-family: 'Exo';
+  font-weight: 700;
+}
+
+.ButtonCreatePaleta:disabled {
+  background-color: gray;
+  cursor: default;
 }

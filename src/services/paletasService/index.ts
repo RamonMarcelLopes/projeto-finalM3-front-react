@@ -1,3 +1,4 @@
+import { CREATEPALETA } from '../../components/modalCreatePaleta';
 import api from '../api';
 interface Item {
   paletaId: string;
@@ -33,9 +34,16 @@ const bagService = {
       .catch((error: any) => console.log(error)),
   DeleteBag: () =>
     api
-      .delete('finish-carrinho')
+      .delete('/finish-carrinho')
       .then((response: any) => response)
       .catch((error: any) => console.log(error)),
 };
 
-export { findAllService, bagService, findOneService };
+const createPaletaService = {
+  createPaleta: (values: CREATEPALETA) =>
+    api
+      .post('/create-paleta', values)
+      .then((response: any) => response)
+      .catch((error: any) => console.log(error)),
+};
+export { findAllService, bagService, findOneService, createPaletaService };

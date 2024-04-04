@@ -19,6 +19,7 @@
 }
 .paletaPicture {
   height: 150px;
+  width: 100px;
   margin-right: -60px;
 }
 .badgeQuantity {
@@ -64,6 +65,7 @@
   padding: 5px;
   text-align: center;
   text-transform: uppercase;
+  outline: none;
 }
 .add {
   background-color: #9400d3;
