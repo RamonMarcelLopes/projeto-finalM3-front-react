@@ -12,7 +12,7 @@ const MainPage = () => {
   let bag: BAG[] = [];
   let [modalbag, setModalbag] = useState<boolean>(false);
   let [modalCreatePaleta, setModalCreatePaleta] = useState<boolean>(false);
-  let [modalSeemore, setModalSeemore] = useState<boolean>(true);
+  let [modalSeemore, setModalSeemore] = useState<boolean>(false);
   let [reset, setReset] = useState<boolean>(false);
   let [modalSeeMoreInformations, setModalSeeMoreInformations] =
     useState<MODALSEEMORE>({
@@ -21,7 +21,10 @@ const MainPage = () => {
       descricao: '',
       img: '',
     });
-
+  let fillForm = (obj: MODALSEEMORE) => {
+    setModalSeeMoreInformations(obj);
+    setModalSeemore(true);
+  };
   let closemodalAndFinishCart = async () => {
     setModalbag(false);
     let response = await bagService.DeleteBag();
@@ -149,6 +152,7 @@ const MainPage = () => {
                   descricao={data.descricao}
                   foto={data.foto}
                   reset={reset}
+                  fillData={fillForm}
                 />
               );
             })}

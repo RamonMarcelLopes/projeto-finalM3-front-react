@@ -24,6 +24,9 @@
   flex-direction: row;
   padding: 15px 0 15px 15px;
 }
+.cursor:hover {
+  cursor: pointer;
+}
 .containerSeeMoreInformation {
   display: flex;
   flex-direction: column;
@@ -58,4 +61,12 @@
 .containerSeeMoreImg {
   height: 100%;
   width: 32%;
+}
+.h1 {
+  font-size: 150%;
+}
+.imageToShowSeeMore {
+  height: 100%;
+  width: auto;
+  max-width: 200px;
 }

@@ -1,4 +1,4 @@
-import ModalSeeMore from '../modalSeeMore';
+import { MODALSEEMORE } from '../modalSeeMore';
 import './index.css';
 
 import { useEffect, useState } from 'react';
@@ -11,6 +11,7 @@ type PALETA = {
   addtobag: (id: string, quantity: number) => void;
   removeFromBag: (id: string) => void;
   reset: boolean;
+  fillData?: (obj: MODALSEEMORE) => void;
 };
 const PaletaCard = ({
   _id,
@@ -21,10 +22,20 @@ const PaletaCard = ({
   addtobag,
   removeFromBag,
   reset,
+  fillData,
 }: PALETA) => {
   const [count, setCount] = useState(0);
 
   let num: number = 2;
+  let obj: any = {
+    sabor: sabor,
+    preco: preco,
+    descricao: descricao,
+    img: foto,
+  };
+  let fill = () => {
+    fillData ? fillData(obj) : null;
+  };
   let addPaleta = () => {
     setCount(count + 1);
     addtobag(_id, 1);
@@ -46,10 +57,16 @@ const PaletaCard = ({
         <span className={`badgeQuantity ${count == 0 ? 'none' : ''}`}>
           {count}
         </span>
-        <div className="allContentContainer">
-          <div className="paletaTitleContainer">{sabor}</div>
-          <div className="paletaPreceContainer">R$ {preco.toFixed(2)}</div>
-          <div className="paletaDescriptionContainer">{descricao}</div>
+        <div className="allContentContainer ">
+          <div onClick={fill} className="paletaTitleContainer cursor">
+            {sabor}
+          </div>
+          <div onClick={fill} className="paletaPreceContainer cursor">
+            R$ {preco.toFixed(2)}
+          </div>
+          <div onClick={fill} className="paletaDescriptionContainer cursor">
+            {descricao}
+          </div>
           <div className="paletaButtonsContainer">
             <button
               onClick={addPaleta}
