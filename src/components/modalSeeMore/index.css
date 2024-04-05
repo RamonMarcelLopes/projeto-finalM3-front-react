@@ -1,0 +1,61 @@
+.ModalSeeMoreContainerAll {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 22rem;
+  width: 30rem;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  font-family: 'Exo';
+  display: flex;
+  padding: 10px 0 10px 30px;
+
+  align-items: center;
+}
+.containerAllContent {
+  background: hsla(0, 0%, 100%, 0.3);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  height: 90%;
+  width: 75%;
+  flex-direction: row;
+  padding: 15px 0 15px 15px;
+}
+.containerSeeMoreInformation {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  height: 100%;
+  /* background-color: aquamarine; */
+  width: 85%;
+}
+.containerSeeMoreTitleSabor {
+  width: 100%;
+  height: 20%;
+  /* background-color: red; */
+}
+.ContainerSeeMorePreco {
+  width: 100%;
+  height: 20%;
+  color: #9400d3;
+  font-size: 2.5em;
+  /* background-color: pink; */
+}
+.ContainerSeeMoreSabor {
+  width: 100%;
+  height: 15%;
+  /* background-color: #9400d3; */
+}
+.ContainerSeeMoreDescricao {
+  width: 100%;
+  height: 35%;
+  /* background-color: blue; */
+}
+.containerSeeMoreImg {
+  height: 100%;
+  width: 32%;
+}

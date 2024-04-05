@@ -1,3 +1,4 @@
+import ModalSeeMore from '../modalSeeMore';
 import './index.css';
 
 import { useEffect, useState } from 'react';
@@ -22,6 +23,7 @@ const PaletaCard = ({
   reset,
 }: PALETA) => {
   const [count, setCount] = useState(0);
+
   let num: number = 2;
   let addPaleta = () => {
     setCount(count + 1);
@@ -32,7 +34,6 @@ const PaletaCard = ({
     removeFromBag(_id);
   };
   let resetCounter = () => {
-    console.log('mudou ai aiiiii');
     setCount(0);
   };
   useEffect(() => {

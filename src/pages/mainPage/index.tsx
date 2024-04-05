@@ -5,13 +5,22 @@ import './index.css';
 import { PALETA, BAG } from './types';
 import ModalGroceryBag from '../../components/modalGroceryBag';
 import ModalCreatePaleta from '../../components/modalCreatePaleta';
+import ModalSeeMore, { MODALSEEMORE } from '../../components/modalSeeMore';
 
 const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
   let bag: BAG[] = [];
-  let [modalbag, setModalbag] = useState(false);
-  let [modalCreatePaleta, setModalCreatePaleta] = useState(false);
+  let [modalbag, setModalbag] = useState<boolean>(false);
+  let [modalCreatePaleta, setModalCreatePaleta] = useState<boolean>(false);
+  let [modalSeemore, setModalSeemore] = useState<boolean>(true);
   let [reset, setReset] = useState<boolean>(false);
+  let [modalSeeMoreInformations, setModalSeeMoreInformations] =
+    useState<MODALSEEMORE>({
+      sabor: '',
+      preco: 0,
+      descricao: '',
+      img: '',
+    });
 
   let closemodalAndFinishCart = async () => {
     setModalbag(false);
@@ -63,6 +72,19 @@ const MainPage = () => {
             onClick={() => setModalCreatePaleta(!modalCreatePaleta)}
             className="blackScreen"
           ></div>
+        </>
+      ) : null}
+      {modalSeemore ? (
+        <>
+          <ModalSeeMore
+            descricao={modalSeeMoreInformations.descricao}
+            img={modalSeeMoreInformations.img}
+            preco={modalSeeMoreInformations.preco}
+            sabor={modalSeeMoreInformations.sabor}
+          />
+          <div onClick={() => setModalSeemore(false)} className="blackScreen">
+            s
+          </div>
         </>
       ) : null}
 
