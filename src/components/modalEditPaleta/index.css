@@ -1,0 +1,74 @@
+.ModalAllContainerEdit {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 15rem;
+  width: 25rem;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  font-family: 'Exo';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.inputsContainerModalEdit {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+}
+.InputAndLabel {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+.titleContainnerModalEdit {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.InputAndLabel input {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+  width: 100%;
+  padding: 10px;
+  font-family: 'Exo';
+  outline: none;
+}
+
+.buttonContainerModalEdit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.buttonContainerModalEdit button {
+  background-color: #9400d3;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+  width: 70%;
+  height: 100%;
+  font-family: 'Exo';
+  font-weight: 700;
+}
+.labelEdit {
+  width: 35%;
+}

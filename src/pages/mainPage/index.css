@@ -67,6 +67,7 @@
 }
 .containerImg {
   cursor: pointer;
+  border-radius: 10px;
 }
 .containerAllPaletas {
   overflow: auto;
@@ -91,4 +92,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.bgColorPurple {
+  background-color: #9400d3;
+  transition: all 0.5s;
+  transform: translateY(-3px);
 }

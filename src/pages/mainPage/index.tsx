@@ -6,6 +6,7 @@ import { PALETA, BAG } from './types';
 import ModalGroceryBag from '../../components/modalGroceryBag';
 import ModalCreatePaleta from '../../components/modalCreatePaleta';
 import ModalSeeMore, { MODALSEEMORE } from '../../components/modalSeeMore';
+import ModalEditPaleta from '../../components/modalEditPaleta';
 
 const MainPage = () => {
   let [data, setData] = useState<PALETA[]>();
@@ -14,6 +15,7 @@ const MainPage = () => {
   let [modalCreatePaleta, setModalCreatePaleta] = useState<boolean>(false);
   let [modalSeemore, setModalSeemore] = useState<boolean>(false);
   let [reset, setReset] = useState<boolean>(false);
+  let [onEditMode, setOnEditMode] = useState<boolean>(false);
   let [modalSeeMoreInformations, setModalSeeMoreInformations] =
     useState<MODALSEEMORE>({
       sabor: '',
@@ -56,6 +58,9 @@ const MainPage = () => {
   let closeModalCreate = () => {
     setModalCreatePaleta(false);
   };
+  let changeEditMode = () => {
+    onEditMode ? setOnEditMode(false) : setOnEditMode(true);
+  };
   return (
     <>
       {/* modal */}
@@ -85,9 +90,10 @@ const MainPage = () => {
             preco={modalSeeMoreInformations.preco}
             sabor={modalSeeMoreInformations.sabor}
           />
-          <div onClick={() => setModalSeemore(false)} className="blackScreen">
-            s
-          </div>
+          <div
+            onClick={() => setModalSeemore(false)}
+            className="blackScreen"
+          ></div>
         </>
       ) : null}
 
@@ -116,7 +122,12 @@ const MainPage = () => {
                   className="optionImg"
                 />
               </div>
-              <div className="containerImg">
+              <div
+                onClick={changeEditMode}
+                className={`containerImg ${
+                  onEditMode ? 'bgColorPurple' : null
+                }`}
+              >
                 <img
                   src="https://jacaimages.vercel.app/imgs/logos/atualizar.svg"
                   alt="image to edit a paleta"
@@ -153,6 +164,9 @@ const MainPage = () => {
                   foto={data.foto}
                   reset={reset}
                   fillData={fillForm}
+                  editModeMain={onEditMode}
+                  changeEditMode={changeEditMode}
+                  getAllPaletas={getAllPaletas}
                 />
               );
             })}

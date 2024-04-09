@@ -46,4 +46,18 @@ const createPaletaService = {
       .then((response: any) => response)
       .catch((error: any) => console.log(error)),
 };
-export { findAllService, bagService, findOneService, createPaletaService };
+
+const editPaletaService = {
+  editPaleta: (id: string, values: any) =>
+    api
+      .put(`/update-paleta/${id}`, values)
+      .then(() => 'success')
+      .catch((err: any) => console.log(err)),
+};
+export {
+  findAllService,
+  bagService,
+  findOneService,
+  createPaletaService,
+  editPaletaService,
+};

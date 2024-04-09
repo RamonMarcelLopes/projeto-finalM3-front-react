@@ -1,3 +1,4 @@
+import ModalEditPaleta from '../modalEditPaleta';
 import { MODALSEEMORE } from '../modalSeeMore';
 import './index.css';
 
@@ -12,6 +13,9 @@ type PALETA = {
   removeFromBag: (id: string) => void;
   reset: boolean;
   fillData?: (obj: MODALSEEMORE) => void;
+  editModeMain: boolean;
+  changeEditMode: () => void;
+  getAllPaletas: () => Promise<void>;
 };
 const PaletaCard = ({
   _id,
@@ -23,8 +27,13 @@ const PaletaCard = ({
   removeFromBag,
   reset,
   fillData,
+  editModeMain,
+  changeEditMode,
+  getAllPaletas,
 }: PALETA) => {
   const [count, setCount] = useState(0);
+  const [editMode, setEditMode] = useState<boolean>(true);
+  const [toEdit, setToEdit] = useState<boolean>(false);
 
   let num: number = 2;
   let obj: any = {
@@ -36,6 +45,7 @@ const PaletaCard = ({
   let fill = () => {
     fillData ? fillData(obj) : null;
   };
+
   let addPaleta = () => {
     setCount(count + 1);
     addtobag(_id, 1);
@@ -50,10 +60,42 @@ const PaletaCard = ({
   useEffect(() => {
     resetCounter();
   }, [reset]);
+  useEffect(() => {
+    setEditMode(editModeMain);
+  }, [editModeMain]);
+  let resetEditModal = () => {
+    setEditMode(false); //deixa cinza tenq ser atualizado na main
+    setToEdit(false); //modal
+    changeEditMode();
+    setTimeout(() => {
+      getAllPaletas();
+    }, 1000);
+  };
 
   return (
     <>
-      <div className="containerPaleta">
+      {/* modal */}
+      {toEdit ? (
+        <>
+          <div
+            className="blackScreen3"
+            onClick={() => setToEdit(!toEdit)}
+          ></div>
+          <ModalEditPaleta id={_id} closeEdit={resetEditModal} />
+        </>
+      ) : null}
+
+      {/* modal */}
+      <div className={`containerPaleta ${editMode ? 'editMode' : null}`}>
+        {editMode ? (
+          <>
+            <span className="badgeEdit">ATUALIZAR</span>
+            <div
+              className="clickToEdit cursor"
+              onClick={() => setToEdit(!toEdit)}
+            ></div>
+          </>
+        ) : null}
         <span className={`badgeQuantity ${count == 0 ? 'none' : ''}`}>
           {count}
         </span>
