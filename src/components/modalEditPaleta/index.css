@@ -14,6 +14,25 @@
   justify-content: center;
   flex-direction: column;
 }
+.ModalAllContainerEditLoading {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 15rem;
+  width: 25rem;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  font-family: 'Exo';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.imgLoading {
+  height: 60px;
+}
 .inputsContainerModalEdit {
   width: 100%;
   height: 80%;

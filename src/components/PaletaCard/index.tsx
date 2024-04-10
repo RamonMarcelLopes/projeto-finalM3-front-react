@@ -77,9 +77,12 @@ const PaletaCard = ({
     setEditMode(false); //deixa cinza tenq ser atualizado na main
     setToEdit(false); //modal
     changeEditMode();
-    setTimeout(() => {
-      getAllPaletas();
-    }, 1000);
+
+    getAllPaletas();
+  };
+  let resetAll = () => {
+    setToEdit(!toEdit);
+    resetEditModal();
   };
 
   return (
@@ -87,10 +90,7 @@ const PaletaCard = ({
       {/* modal */}
       {toEdit ? (
         <>
-          <div
-            className="blackScreen3"
-            onClick={() => setToEdit(!toEdit)}
-          ></div>
+          <div className="blackScreen3" onClick={resetAll}></div>
           <ModalEditPaleta id={_id} closeEdit={resetEditModal} />
         </>
       ) : null}

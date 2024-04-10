@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './index.css';
 import { createPaletaService } from '../../services/paletasService';
+import spinner from '../../assets/spinner.gif';
 
 export type CREATEPALETA = {
   preco: number;
@@ -46,11 +47,7 @@ const ModalCreatePaleta = ({
     <>
       {isloading ? (
         <div className="loadContainer">
-          <img
-            src="https://vksuexams.com/pat22/resourses/spinner.gif"
-            className="loading"
-            alt=""
-          />
+          <img src={spinner} className="loading" alt="" />
         </div>
       ) : null}
       <div className="modalAllContainer">

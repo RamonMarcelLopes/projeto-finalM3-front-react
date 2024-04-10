@@ -3,6 +3,7 @@ import {
   findOneService,
 } from '../../services/paletasService';
 import './index.css';
+import spinner from '../../assets/spinner.gif';
 import { useEffect, useState } from 'react';
 type PALETAEDIT = {
   _id?: string;
@@ -13,6 +14,7 @@ type PALETAEDIT = {
 };
 const ModalEditPaleta = ({ id, closeEdit }: any) => {
   const [values, setValues] = useState<PALETAEDIT | any>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleChangesValues = (event: any) => {
     setValues((values: any) => ({
       ...values,
@@ -21,18 +23,28 @@ const ModalEditPaleta = ({ id, closeEdit }: any) => {
   };
   let editPaleta = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     delete values._id;
-    await editPaletaService.editPaleta(id, values).then(() => closeEdit());
+    await editPaletaService.editPaleta(id, values).then(() => closeLoading());
   };
   let fillForm = async () => {
     let response = await findOneService.findOnePaleta(id);
     setValues(response.data);
+  };
+  let closeLoading = () => {
+    closeEdit();
+    setIsLoading(false);
   };
   useEffect(() => {
     fillForm();
   }, []);
   return (
     <>
+      {isLoading ? (
+        <div className="ModalAllContainerEditLoading">
+          <img className="imgLoading" src={spinner} alt="" />
+        </div>
+      ) : null}
       <div className="ModalAllContainerEdit">
         <div className="titleContainnerModalEdit">
           <h2>Atualizar Cardápio</h2>
