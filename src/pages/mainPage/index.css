@@ -78,6 +78,26 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.containerAllPaletasLoading {
+  height: 60%;
+  width: auto;
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  top: 20%;
+  text-align: center;
+}
+.containerAllPaletasLoading img {
+  height: 100px;
+}
+.containerAllPaletasLoading h1 {
+  color: #fff;
+  font-family: 'Exo';
+  font-size: 2.5em;
+}
 .blackScreen {
   background-color: rgba(0, 0, 0, 0.557);
   position: absolute;
@@ -103,4 +123,9 @@
   background-color: #d30000;
   transition: all 0.5s;
   transform: translateY(-3px);
+}
+@media (max-width: 1059px) {
+  .containerAllPaletas {
+    width: 95%;
+  }
 }

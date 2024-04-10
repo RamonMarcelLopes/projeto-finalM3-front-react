@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import spinner from '../../assets/spinner.gif';
 import PaletaCard from '../../components/PaletaCard';
 import { bagService, findAllService } from '../../services/paletasService';
 import './index.css';
@@ -157,6 +158,14 @@ const MainPage = () => {
               </div>
             </div>
           </header>
+
+          {!data ? (
+            <div className="containerAllPaletasLoading">
+              <h1>carregando pode levar alguns minutos</h1>
+              <img src={spinner} alt="" />
+              <h1>loading can take a few minutes</h1>
+            </div>
+          ) : null}
           <div className="containerAllPaletas">
             {data?.map((data: PALETA) => {
               return (

@@ -88,3 +88,16 @@
 .buttonModalCancelarDelete:hover {
   background-color: rgb(188, 8, 8);
 }
+@media (max-width: 1059px) {
+  .ModalAllContainerDelete {
+    width: 24rem;
+    text-align: center;
+  }
+  .ModalAllContainerDeleteLoading {
+    width: 24rem;
+    text-align: center;
+  }
+  .containerImgModalDelete {
+    margin-top: 15px;
+  }
+}
