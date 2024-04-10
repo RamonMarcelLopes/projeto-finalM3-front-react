@@ -99,3 +99,8 @@
   transition: all 0.5s;
   transform: translateY(-3px);
 }
+.bgColorRed {
+  background-color: #d30000;
+  transition: all 0.5s;
+  transform: translateY(-3px);
+}

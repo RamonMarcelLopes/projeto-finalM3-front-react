@@ -16,6 +16,7 @@ const MainPage = () => {
   let [modalSeemore, setModalSeemore] = useState<boolean>(false);
   let [reset, setReset] = useState<boolean>(false);
   let [onEditMode, setOnEditMode] = useState<boolean>(false);
+  let [onDeleteMode, setOnDeleteMode] = useState<boolean>(false);
   let [modalSeeMoreInformations, setModalSeeMoreInformations] =
     useState<MODALSEEMORE>({
       sabor: '',
@@ -60,6 +61,9 @@ const MainPage = () => {
   };
   let changeEditMode = () => {
     onEditMode ? setOnEditMode(false) : setOnEditMode(true);
+  };
+  let changeDeleteMode = () => {
+    onDeleteMode ? setOnDeleteMode(false) : setOnDeleteMode(true);
   };
   return (
     <>
@@ -134,7 +138,10 @@ const MainPage = () => {
                   className="optionImg"
                 />
               </div>
-              <div className="containerImg">
+              <div
+                onClick={changeDeleteMode}
+                className={`containerImg ${onDeleteMode ? 'bgColorRed' : null}`}
+              >
                 <img
                   src="https://jacaimages.vercel.app/imgs/logos/deletar.svg"
                   alt="image to delete a paleta"
@@ -167,6 +174,8 @@ const MainPage = () => {
                   editModeMain={onEditMode}
                   changeEditMode={changeEditMode}
                   getAllPaletas={getAllPaletas}
+                  onDeleteMode={onDeleteMode}
+                  changeDeleteMode={changeDeleteMode}
                 />
               );
             })}

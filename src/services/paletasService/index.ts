@@ -54,10 +54,18 @@ const editPaletaService = {
       .then(() => 'success')
       .catch((err: any) => console.log(err)),
 };
+const DeletePaletaService = {
+  deletePaleta: (id: string) =>
+    api
+      .delete(`/delete-paleta/${id}`)
+      .then(() => 'success')
+      .catch((err: any) => console.log(err)),
+};
 export {
   findAllService,
   bagService,
   findOneService,
   createPaletaService,
   editPaletaService,
+  DeletePaletaService,
 };

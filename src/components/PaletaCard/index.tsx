@@ -1,3 +1,4 @@
+import ModalDeletePaleta from '../modalDeletePaleta';
 import ModalEditPaleta from '../modalEditPaleta';
 import { MODALSEEMORE } from '../modalSeeMore';
 import './index.css';
@@ -16,6 +17,8 @@ type PALETA = {
   editModeMain: boolean;
   changeEditMode: () => void;
   getAllPaletas: () => Promise<void>;
+  onDeleteMode: boolean;
+  changeDeleteMode: () => void;
 };
 const PaletaCard = ({
   _id,
@@ -30,10 +33,13 @@ const PaletaCard = ({
   editModeMain,
   changeEditMode,
   getAllPaletas,
+  onDeleteMode,
+  changeDeleteMode,
 }: PALETA) => {
   const [count, setCount] = useState(0);
   const [editMode, setEditMode] = useState<boolean>(true);
   const [toEdit, setToEdit] = useState<boolean>(false);
+  const [toDelete, setToDelete] = useState<boolean>(false);
 
   let num: number = 2;
   let obj: any = {
@@ -45,7 +51,10 @@ const PaletaCard = ({
   let fill = () => {
     fillData ? fillData(obj) : null;
   };
-
+  let resetDeleteMode = () => {
+    setToDelete(false);
+    changeDeleteMode();
+  };
   let addPaleta = () => {
     setCount(count + 1);
     addtobag(_id, 1);
@@ -63,6 +72,7 @@ const PaletaCard = ({
   useEffect(() => {
     setEditMode(editModeMain);
   }, [editModeMain]);
+
   let resetEditModal = () => {
     setEditMode(false); //deixa cinza tenq ser atualizado na main
     setToEdit(false); //modal
@@ -84,15 +94,39 @@ const PaletaCard = ({
           <ModalEditPaleta id={_id} closeEdit={resetEditModal} />
         </>
       ) : null}
-
+      {toDelete ? (
+        <>
+          <ModalDeletePaleta
+            id={_id}
+            sabor={sabor}
+            img={foto}
+            resetDeleteMode={resetDeleteMode}
+            getAllPaletas={getAllPaletas}
+          />
+          <div onClick={resetDeleteMode} className="blackScreen3"></div>
+        </>
+      ) : null}
       {/* modal */}
-      <div className={`containerPaleta ${editMode ? 'editMode' : null}`}>
+      <div
+        className={`containerPaleta ${editMode ? 'editMode' : null} ${
+          onDeleteMode ? 'deleteMode' : null
+        }`}
+      >
         {editMode ? (
           <>
             <span className="badgeEdit">ATUALIZAR</span>
             <div
               className="clickToEdit cursor"
               onClick={() => setToEdit(!toEdit)}
+            ></div>
+          </>
+        ) : null}
+        {onDeleteMode ? (
+          <>
+            <span className="badgeDelete">DELETAR</span>
+            <div
+              onClick={() => setToDelete(true)}
+              className="clickToDelete cursor"
             ></div>
           </>
         ) : null}

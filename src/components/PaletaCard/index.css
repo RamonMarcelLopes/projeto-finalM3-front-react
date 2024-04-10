@@ -132,3 +132,39 @@
   left: 0%;
   bottom: 0%;
 }
+.deleteMode {
+  color: gray;
+  box-shadow: 0 0 7px #d30000;
+}
+.deleteMode button {
+  background-color: gray;
+}
+.deleteMode img {
+  filter: grayscale(100%);
+}
+.deleteMode div {
+  color: gray;
+}
+
+.badgeDelete {
+  position: absolute;
+  background-color: #d30000;
+  z-index: 0.5;
+  border-radius: 5px;
+  left: -10px;
+  top: -10px;
+  padding: 5px;
+  letter-spacing: 1px;
+  font-size: 0.6em;
+  font-family: 'Exo';
+  color: #fff;
+}
+
+.clickToDelete {
+  width: 100%;
+  height: 93%;
+  position: absolute;
+  z-index: 4;
+  left: 1px;
+  top: 5px;
+}

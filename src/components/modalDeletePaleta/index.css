@@ -1,0 +1,90 @@
+.ModalAllContainerDelete {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 15rem;
+  width: 34rem;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  font-family: 'Exo';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.ModalAllContainerDeleteLoading {
+  position: absolute;
+  background-color: #50c5ee;
+  height: 15rem;
+  width: 34rem;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  font-family: 'Exo';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.spinerDeleteImg {
+  height: 30%;
+}
+
+.containerTitleModalDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+}
+.containerConfirmationTextAndImgModalDelete {
+  height: 60%;
+}
+.containerButtonsModalDelete {
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.imgModalDelete {
+  height: 95%;
+  width: auto;
+}
+.containerImgModalDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+.containerConfirmationTextModalDelete {
+  height: 20%;
+}
+.containerButtonsModalDelete button {
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Exo, sans-serif;
+  font-weight: 700;
+  max-width: 280px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 45%;
+}
+.buttonModalConfrimarDelete {
+  background-color: #9400d3;
+}
+.buttonModalCancelarDelete {
+  background-color: red;
+}
+.buttonModalConfrimarDelete:hover {
+  background-color: #7806a9;
+}
+.buttonModalCancelarDelete:hover {
+  background-color: rgb(188, 8, 8);
+}
