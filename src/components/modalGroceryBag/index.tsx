@@ -28,7 +28,24 @@ const ModalGroceryBag = () => {
   let navigate = useNavigate();
   let getdata = async () => {
     let sacolaLista = await findAllService.allBagPaletas();
-    setData(sacolaLista.data);
+
+    const mergedSacolaLista = sacolaLista.data.reduce(
+      (acc: any[], curr: any) => {
+        const existingItem = acc.find(
+          (item: any) => item.paletaId === curr.paletaId
+        );
+
+        if (existingItem) {
+          existingItem.quantidade += curr.quantidade;
+        } else {
+          acc.push(curr);
+        }
+
+        return acc;
+      },
+      []
+    );
+    setData(mergedSacolaLista);
   };
   let finishCart = async () => {
     let response = await bagService.DeleteBag();
