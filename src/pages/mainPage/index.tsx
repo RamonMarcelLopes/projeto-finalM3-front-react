@@ -36,14 +36,12 @@ const MainPage = () => {
   };
   let addToBag = (id: string, quantity: number) => {
     bag.push({ paletaId: id, quantidade: quantity });
-    console.log(bag);
   };
   let removeFromBag = (id: string) => {
     let indexToRemove = bag.findIndex((item) => item.paletaId === id);
     if (indexToRemove !== -1) {
       bag.splice(indexToRemove, 1);
     }
-    console.log(bag);
   };
 
   let createBag = async () => {
